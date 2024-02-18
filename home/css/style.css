@@ -1,0 +1,20 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.rating {
+    padding-left: 40px;
+}
+
+.img {
+    height: 400px;
+    width: 300px;
+}
