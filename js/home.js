@@ -1,7 +1,7 @@
 const movieContainer = document.querySelector(".movies-container");
 const resetButton = document.querySelector(".reset-btn");
 const filterDropdown = document.querySelector(".filter-dropdown");
-
+const infoButton = document.querySelector(".infoBtn");
 
 let movies = [];
 let genreArray = [];
@@ -17,12 +17,15 @@ function displayMovies(){
     for (let i = 0; i < movies.length; i++){
             movieContainer.innerHTML +=`
                 <div>
-                    <img class="img" src="${movies[i].image}">
+                    <img class="img" src="${movies[i].image}" alt="movie-img">
                     <h1>${movies[i].title}</h1>
                     <p class="bold">price: ${movies[i].price}
                         <span class="bold, rating">rating: ${movies[i].rating}</span>
-                    </p>
+                    </p>  
                     <p>${movies[i].description}</p>
+                    <a href="product.html?id=${movies[i].id}">
+                        View more info
+                    </a>
                 </div>`
             if (!genreArray.includes(movies[i].genre)){
                 (genreArray.push(movies[i].genre));
@@ -50,12 +53,12 @@ function displayFilterMovies (filerValue) {
                         <p class="bold">price: ${movies[i].price}
                             <span class="bold, rating">rating: ${movies[i].rating}</span>
                         </p>
-                        <p>${movies[i].description}</p>
+                        <p>${movies[i].description}</p> 
+                        <a href="product.html?id=${movies[i].id}">
+                            View more info
+                        </a>  
                     </div>`
-                }
-            }
-        })
-}
+                }}})};
 
 filterDropdown.addEventListener("change", ()=> {
     if (filterDropdown.value === "All movies"){
@@ -68,15 +71,4 @@ resetButton.addEventListener("click", ()=> {
     movieContainer.innerHTML = ``;
     filterDropdown.innerHTML = `<option value="default" disabled selected>Select your</option>`;
     displayMovies(movies);
-})
-
-
-
-
-
-
-
-
-
-
-
+});
