@@ -1,6 +1,5 @@
 const movieContainer = document.querySelector(".basket-movies");
 let moviesDeserialized = JSON.parse(localStorage.getItem("data"));
-console.log(moviesDeserialized);
 
 function displayBasket (){
     for (let i = 0; i < moviesDeserialized.length; i++){

@@ -1,16 +1,15 @@
 const movieContainer = document.querySelector(".movies-container");
 const resetButton = document.querySelector(".reset-btn");
 const filterDropdown = document.querySelector(".filter-dropdown");
-const infoButton = document.querySelector(".infoBtn");
 
 let movies = [];
 let genreArray = [];
+
 fetch("https://api.noroff.dev/api/v1/square-eyes")
     .then((response) => response.json())
     .then((result) => movies = result)
     .then(()=> {
         displayMovies(movies)
-        console.log(movies)
     });
 
 function displayMovies(){
@@ -34,7 +33,6 @@ function displayMovies(){
     for (let i = 0; i < genreArray.length; i++) {
         filterDropdown.innerHTML += `<option>${genreArray[i]}</option>`
     }
-    console.log(genreArray);
 }
 
 function displayFilterMovies (filerValue) {
@@ -43,7 +41,6 @@ function displayFilterMovies (filerValue) {
         .then((result) => {
             movies = result
             movieContainer.innerHTML = ``;
-            console.log(filerValue)
             for (let i = 0; i < movies.length; i++) {
                 if (movies[i].genre === filerValue) {
                     movieContainer.innerHTML += `
