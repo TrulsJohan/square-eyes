@@ -9,6 +9,7 @@ console.log(idValue);
 
 let data = [];
 let dataMovie = [];
+
 fetch("https://api.noroff.dev/api/v1/square-eyes")
     .then((response) => response.json())
     .then((result) => {
@@ -32,11 +33,16 @@ function displayMovie (){
 }
 
 addToBasket.addEventListener("click", ()=> {
-    let movieSerialized = JSON.stringify(dataMovie);
-    localStorage.setItem("movieSerialized", movieSerialized);
-    window.location = `http://localhost:63342/square-eyes/basket.html`;
-    console.log(localStorage);
+    saveLocalStorage()
 })
 
-
+function saveLocalStorage (){
+    let newData = dataMovie;
+    if (localStorage.getItem(`data`) === null){
+        localStorage.setItem(`data`, `[]`);
+    }
+    let oldData = JSON.parse(localStorage.getItem(`data`));
+    oldData.push(newData);
+    localStorage.setItem(`data`, JSON.stringify(oldData));
+}
 
