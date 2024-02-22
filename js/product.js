@@ -4,6 +4,7 @@ const addToBasket = document.querySelector(".basket-button")
 const queryString = window.location.search;
 const urlParam = new URLSearchParams(queryString);
 const idValue = urlParam.get(`id`);
+console.log(idValue);
 
 let data = [];
 let dataMovie = [];
