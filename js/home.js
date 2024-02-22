@@ -14,7 +14,7 @@ async function fetchData (){
         displayMovies(movies);
     }
     catch (error){
-        console.log("Could not fetch the data!", error)
+        alert("Could not fetch data!");
     }
 }
 
@@ -24,13 +24,12 @@ function displayMovies(){
     loading.style.display = `none`;
     for (let i = 0; i < movies.length; i++){
             movieContainer.innerHTML +=`
-                <div>
+                <div class="product-container">
                     <img class="img" src="${movies[i].image}" alt="movie-img">
                     <h1>${movies[i].title}</h1>
                     <p class="bold">price: ${movies[i].price}
                         <span class="bold, rating">rating: ${movies[i].rating}</span>
-                    </p>  
-                    <p>${movies[i].description}</p>
+                    </p>                   
                     <a href="product.html?id=${movies[i].id}">
                         View more info
                     </a>
@@ -45,20 +44,21 @@ function displayMovies(){
 }
 
 async function displayFilterMovies (filterValue){
+    loading.style.display = `block`;
     try {
         const response = await fetch("https://api.noroff.dev/api/v1/square-eyes");
         const movies = await response.json();
+        loading.style.display = `none`;
         movieContainer.innerHTML = ``;
         for (let i = 0; i < movies.length; i++) {
             if (movies[i].genre === filterValue) {
                 movieContainer.innerHTML += `
-                    <div>
+                    <div class="product-container">
                         <img class="img" src="${movies[i].image}">
                         <h1>${movies[i].title}</h1>
                         <p class="bold">price: ${movies[i].price}
                             <span class="bold, rating">rating: ${movies[i].rating}</span>
-                        </p>
-                        <p>${movies[i].description}</p> 
+                        </p> 
                         <a href="product.html?id=${movies[i].id}">
                             View more info
                         </a>  
@@ -66,7 +66,7 @@ async function displayFilterMovies (filterValue){
             }}
     }
     catch (error){
-        console.log("Could not fetch data!", error);
+        alert("Could not fetch data!");
     }
 }
 
