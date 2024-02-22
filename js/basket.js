@@ -1,16 +1,16 @@
 const movieContainer = document.querySelector(".basket-movies");
+const checkoutContainer = document.querySelector(".checkout-container");
 let moviesDeserialized = JSON.parse(localStorage.getItem("data"));
 
 function displayBasket (){
     for (let i = 0; i < moviesDeserialized.length; i++){
         movieContainer.innerHTML +=`
-            <div>
+            <div class="product-container">
                 <img class="img" src="${moviesDeserialized[i].image}" alt="movie-img">
                 <h1>${moviesDeserialized[i].title}</h1>
                 <p class="bold">price: ${moviesDeserialized[i].price}
                     <span class="bold, rating">rating: ${moviesDeserialized[i].rating}</span>
-                </p>  
-                <p>${moviesDeserialized[i].description}</p> 
+                </p>   
                 <button class="remove-button" data-index="${i}">Remove from basket</button>
             </div>
         `
@@ -26,6 +26,17 @@ movieContainer.addEventListener("click", (event)=> {
         localStorage.setItem("data", JSON.stringify(moviesDeserialized));
         movieContainer.innerHTML = "";
         displayBasket();
+        checkoutButton();
     }
 })
+
+function checkoutButton (){
+    if (moviesDeserialized.length === 0){
+        checkoutContainer.style.display = `none`;
+    } else {
+        checkoutContainer.style.display = `block`;
+    }
+}
+
+checkoutButton();
 

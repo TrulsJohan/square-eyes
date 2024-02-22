@@ -11,22 +11,28 @@
 <body>
     <header>
         <nav>
-            <a href="home.html">
-                <button>Home</button>
-            </a>
-            <a href="basket.html">
-                <button>Basket</button>
-            </a>
+            <img class="logo" src="assets/img/square-eyes-logo.png" alt="logo">
+            <div>
+                <a href="home.html">
+                    <button>Home</button>
+                </a>
+                <a href="basket.html">
+                    <button>Basket</button>
+                </a>
+            </div>
         </nav>
     </header>
 
-    <button class="reset-btn">Reset</button>
-    <select class="filter-dropdown">
-        <option value="default" disabled selected>Select your</option>
-    </select>
+    <section class="filter-section">
+        <button class="reset-btn">Reset</button>
+        <label for="filter-dropdown">
+            <select class="filter-dropdown" id="filter-dropdown">
+                <option value="default" disabled selected>Select your</option>
+            </select>
+        </label>
+    </section>
 
     <div class="loading">Loading...</div>
-
     <div class="movies-container"></div>
 </body>
 
