@@ -1,4 +1,5 @@
 const movieContainer = document.querySelector(".checkout-movies");
+const confirmOrder = document.querySelector(".confirm-order");
 let moviesDeserialized = JSON.parse(localStorage.getItem("data"));
 
 function displayBasket (){
@@ -17,4 +18,8 @@ function displayBasket (){
 }
 
 displayBasket();
+
+confirmOrder.addEventListener("click", ()=> {
+    localStorage.clear();
+});
 

@@ -2,6 +2,8 @@ const movieContainer = document.querySelector(".basket-movies");
 const checkoutContainer = document.querySelector(".checkout-container");
 let moviesDeserialized = JSON.parse(localStorage.getItem("data"));
 
+checkoutContainer.style.display = `none`;
+
 function displayBasket (){
     for (let i = 0; i < moviesDeserialized.length; i++){
         movieContainer.innerHTML +=`
